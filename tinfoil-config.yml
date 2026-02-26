@@ -17,7 +17,7 @@ containers:
       - SYNC_SERVER_URL: "https://pollux-sync.debug.wsl.containers.tinfoil.dev"
       - EMBEDDING_SERVER_URL: "https://confidential-pollux-embeddings.debug.wsl.containers.tinfoil.dev"
       - TRAINING_SERVER_URL: "https://debug-wkzse6.inf11.tinfoil.sh"
-      - MEMEX_SERVER_URL: "https://memex.debug.wsl.functions.tinfoil.sh"
+      - MEMEX_SERVER_URL: "https://memex.debug.wsl.containers.tinfoil.dev"
       - DEBUG_ARTEFACT_CHAT: "true"
       - EMAIL_VERIFY_ENABLED: "false"
       - INFERENCE_SERVER_URL: "https://debug-ys2t9i.inf12.tinfoil.sh/v1"
