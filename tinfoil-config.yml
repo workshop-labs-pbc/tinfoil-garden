@@ -1,0 +1,38 @@
+shim-version: v0.3.16@sha256:20220be4487f241e7e2a9af6dd576d20ba35d71307bd777c8dba9ba5da03fb38
+cvm-version: 0.6.7
+cpus: 16
+memory: 65536
+
+containers:
+  - name: "garden-app"
+    image: "us-central1-docker.pkg.dev/workshop-labs-pbc/garden-docker/app@sha256:9dd08bb4daa673f6391b066740011a2f423a7f7e02fd5fbbb057d5e96f427497"
+    volumes:
+      - /mnt/ramdisk/gcloud_key.json:/key.json:ro
+    env:
+      - NODE_ENV: "production"
+      - NODE_OPTIONS: "--max-old-space-size=28672"
+      - GOOGLE_APPLICATION_CREDENTIALS: "/key.json"
+      - GCS_BUCKET: "pollux-enc-prod"
+      - POLLUX_LN_GCS_BUCKET: "gs://pollux-enc-prod"
+      - SYNC_SERVER_URL: "https://pollux-sync.debug.wsl.functions.tinfoil.sh"
+      - EMBEDDING_SERVER_URL: "https://confidential-pollux-embeddings.debug.wsl.functions.tinfoil.sh"
+      - TRAINING_SERVER_URL: "https://debug-wkzse6.inf11.tinfoil.sh"
+      - MEMEX_SERVER_URL: "https://memex.debug.wsl.functions.tinfoil.sh"
+      - DEBUG_ARTEFACT_CHAT: "true"
+      - EMAIL_VERIFY_ENABLED: "false"
+      - INFERENCE_SERVER_URL: "https://debug-ys2t9i.inf12.tinfoil.sh/v1"
+    secrets:
+      - DATABASE_URL
+      - BETTER_AUTH_SECRET
+      - RESEND_API_KEY
+      - GOOGLE_CLIENT_ID
+      - GOOGLE_CLIENT_SECRET
+      - EXA_API_KEY
+      - TINFOIL_API_KEY
+      - TINFOIL_API_KEY_BACKUP_ACCOUNT
+      - INTERNAL_SERVICE_SECRET
+
+shim:
+  listen-port: 443
+  upstream-port: 3000
+  tls-challenge: http
