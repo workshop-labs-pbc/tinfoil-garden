@@ -5,7 +5,7 @@ memory: 65536
 
 containers:
   - name: "garden-app"
-    image: "us-central1-docker.pkg.dev/workshop-labs-pbc/garden-docker/app@sha256:9dd08bb4daa673f6391b066740011a2f423a7f7e02fd5fbbb057d5e96f427497"
+    image: "us-central1-docker.pkg.dev/workshop-labs-pbc/garden-docker/app@sha256:bd6e79535d7f9a8e76bce535b95bcde2da96d4203bd95451e5cb617eaeb1c499"
     volumes:
       - /mnt/ramdisk/gcloud_key.json:/key.json:ro
     env:
